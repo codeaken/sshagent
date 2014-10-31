@@ -2,6 +2,7 @@
 namespace Codeaken\SshAgent;
 
 use Symfony\Component\Process\Process;
+use Codeaken\SshKey\SshPrivateKey;
 
 class SshAgent
 {
