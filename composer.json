@@ -1,0 +1,23 @@
+{
+    "name": "codeaken/sshagent",
+    "description": "Manage an SSH agent from PHP",
+    "keywords": ["ssh", "agent", "sshagent"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Magnus Johansson",
+            "email": "magnus@codeaken.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "codeaken/sshkey": "@dev",
+        "symfony/process": "2.5.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Codeaken\\SshAgent\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
