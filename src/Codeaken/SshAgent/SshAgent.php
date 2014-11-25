@@ -71,8 +71,9 @@ class SshAgent
             [
                 'SSH_AUTH_SOCK' => $this->getSocket()
             ],
-            $key->getPassword()
+            $key->getPassword() . "\n"
         );
+        $sshAdd->setPty(true);
         $sshAdd->run();
 
         if ( ! $sshAdd->isSuccessful()) {
