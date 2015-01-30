@@ -58,10 +58,16 @@ class SshAgent
             $kill = new Process("kill -s TERM {$this->pid}");
             $kill->run();
 
+            if ( ! $kill->isSuccessful()) {
+                return false;
+            }
+
             // Reset state
             $this->pid = 0;
             $this->socket = '';
         }
+
+        return true;
     }
 
     public function addKey(SshPrivateKey $key)
