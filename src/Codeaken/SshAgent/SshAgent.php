@@ -17,6 +17,11 @@ class SshAgent
 
     public function start()
     {
+        if ($this->isRunning()) {
+            // Do not allow starting a new agent if there is one already running.
+            return false;
+        }
+
         $agent = new Process('ssh-agent -s');
         $agent->run();
 
