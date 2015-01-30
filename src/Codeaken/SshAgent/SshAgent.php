@@ -49,7 +49,7 @@ class SshAgent
 
     public function stop()
     {
-        if (0 != $this->pid) {
+        if ($this->isRunning()) {
             $kill = new Process("kill -s TERM {$this->pid}");
             $kill->run();
 
@@ -93,5 +93,14 @@ class SshAgent
     public function getSocket()
     {
         return $this->socket;
+    }
+
+    public function isRunning()
+    {
+        if (0 == $this->pid && empty($this->socket)) {
+            return false;
+        }
+
+        return true;
     }
 }
