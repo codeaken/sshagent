@@ -61,6 +61,12 @@ class SshAgent
 
     public function addKey(SshPrivateKey $key)
     {
+        if ( ! $this->isRunning()) {
+            // No point in trying to add a key to an agent that is not running
+            // so abort early
+            return false;
+        }
+
         // Save the key to a temporary file
         $tmpKey = tempnam(sys_get_temp_dir(), 'codeaken_sshagent_');
         file_put_contents($tmpKey, $key->getKeyData(SshKey::FORMAT_PKCS8));
